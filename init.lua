@@ -35,3 +35,6 @@ require "autocmds"
 vim.schedule(function()
   require "mappings"
 end)
+
+vim.deprecate = function() end
+
