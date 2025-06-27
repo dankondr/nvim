@@ -37,12 +37,17 @@ vim.schedule(function()
 end)
 
 if vim.g.neovide then
-  vim.api.nvim_set_keymap('v', '<sc-c>', '"+y', {noremap = true})
-  vim.api.nvim_set_keymap('n', '<sc-v>', 'l"+P', {noremap = true})
-  vim.api.nvim_set_keymap('v', '<sc-v>', '"+P', {noremap = true})
-  vim.api.nvim_set_keymap('c', '<sc-v>', '<C-o>l<C-o>"+<C-o>P<C-o>l', {noremap = true})
-  vim.api.nvim_set_keymap('i', '<sc-v>', '<ESC>l"+Pli', {noremap = true})
-  vim.api.nvim_set_keymap('t', '<sc-v>', '<C-\\><C-n>"+Pi', {noremap = true})
-  vim.o.guifont = "JetBrains Mono:h12"
+  local uname = vim.loop.os_uname()
+  local is_macos = uname.sysname == "Darwin"
+  local cmd_key = is_macos and "<D-" or "<S-C-"
+
+  vim.api.nvim_set_keymap('v', cmd_key .. "c>", '"+y', { noremap = true, silent = true })
+  vim.api.nvim_set_keymap('n', cmd_key .. "v>", 'l"+P', { noremap = true, silent = true })
+  vim.api.nvim_set_keymap('v', cmd_key .. "v>", '"+P', { noremap = true, silent = true })
+  vim.api.nvim_set_keymap('c', cmd_key .. "v>", '<C-o>l<C-o>"+<C-o>P<C-o>l', { noremap = true, silent = true })
+  vim.api.nvim_set_keymap('i', cmd_key .. "v>", '<ESC>l"+Pli', { noremap = true, silent = true })
+  vim.api.nvim_set_keymap('t', cmd_key .. "v>", '<C-\\><C-n>"+Pi', { noremap = true, silent = true })
+
+  vim.o.guifont = "JetBrains Mono:h13"
 end
 

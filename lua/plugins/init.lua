@@ -89,6 +89,8 @@ return {
     opts = {
       enable = true,
       mode = "topline",
+      multiline_threshold = 1,
+      max_lines = 3,
     },
   },
 
