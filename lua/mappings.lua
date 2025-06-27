@@ -13,6 +13,8 @@ map("n", "gi", require("telescope.builtin").lsp_implementations)
 map("n", "gd", require("telescope.builtin").lsp_definitions)
 map("n", "gt", require("telescope.builtin").lsp_type_definitions)
 map("n", "<leader>fs", require("telescope.builtin").lsp_document_symbols)
+map("n", "<leader>gd", require("gitsigns").toggle_deleted)
+map("n", "<leader>gh", require("gitsigns").preview_hunk_inline)
 
 autocmd({'CursorHold', 'CursorHoldI'}, {
   callback = function (_)
